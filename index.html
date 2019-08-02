@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SERIES</title>
+	<!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'> -->
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+
+<div class="form-style-8">
+  <h2>Fill The Series Details</h2>
+  <form target="series.php" method="POST" >
+    <input type="text" name="SeriesName" placeholder="Series Name" />
+<!--     <input type="text" name="LocationCountry" placeholder="Country" />
+    <input type="text" name="FormatName" placeholder="Format Name"> 
+    <input type="text" name="SeriesType" placeholder="Series Type" /> -->
+    <input type="text" name="Location" placeholder="Location" />
+    <label>Country</label>
+	<select>
+		  <option value="volvo">India</option>
+		  <option value="saab" selected>Bangladesh</option>
+		  <option value="mercedes">UK</option>
+	</select> 
+    <label>Format Name</label>
+	<select>
+		  <option value="volvo">T20</option>
+		  <option value="saab">T10</option>
+		  <option value="mercedes">50 Overs</option>
+		  <option value="audi">40 Over</option>
+	</select> 
+    <label>Series Type</label>
+	<select>
+		  <option value="volvo">Under 16</option>
+		  <option value="saab">Under 19</option>
+		  <option value="mercedes">Under 21</option>
+		  <option value="audi">Open</option>
+		  <option value="audi">ODI</option>
+	</select> 
+    <input type="submit" name="submit" value="Submit">
+  </form>
+</div>
+
+</body>
+</html>
+<?php
+
+?>
