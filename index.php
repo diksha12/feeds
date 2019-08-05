@@ -21,12 +21,14 @@
 
 <div class="form-style-8">
   <h2>Select Action</h2>
-<a href="data.php?form=format"><button>Add Formats</button></a><br>
+User
 <a href="series.php"><button>Add Series</button></a><br>
-<a href="data.php?form=seriestype"><button>Add Series Type</button></a><br>
 <a href="teams.php"><button>Add Teams</button></a><br>
 <a href="players.php"><button>Add Players</button></a><br>
 <a href="squads.php"><button>Add Squads</button></a><br>
+Admin
+<a href="data.php?form=seriestype"><button>Add Series Type</button></a><br>
+<a href="data.php?form=format"><button>Add Formats</button></a><br>
 </div>
 
 </body>

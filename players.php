@@ -52,24 +52,24 @@ include("config.php");
 		  <option value="WicketKeeper">Wicket Keeper</option>
 		  <option value="AllRounder">All Rounder</option>
 	</select> 
-    <input type="submit" name="submit" value="Submit">
+	<a href="index.php">back</a>
+    <input type="submit" name="submit" value="Submit" style="float: right;">
   </form>
 </div>
 
 </body>
 </html>
 <?php
-include("config.php");
 if (!empty($_POST['PlayerName']) && !empty($_POST['PlayerDOB']) && !empty($_POST['PlayerArea']) && !empty($_POST['TeamId']) && !empty($_POST['SeriesId']) && !empty($_POST['PlayerType']) && !empty($_POST['submit'])) 
 {
 		mysqli_query($link,"insert into players (name, dob, area, current_team, current_series, player_type, created_by, datetime_created, player_credits) values('".$_POST['PlayerName']."','".$_POST['PlayerDOB']."','".$_POST['PlayerArea']."','".$_POST['TeamId']."','".$_POST['SeriesId']."','".$_POST['PlayerType']."','1','".$timenow."','0' )");
-	if(mysqli_error($link)){
+	header("Location: popupwindow.php?format=players&&values=".$_POST['PlayerName']);
+		if(mysqli_error($link)){
 		echo mysqli_error($link);
 	}
 }
-else{
-	echo "Complete the Form";
-}
-
+// else{
+// 	header("Location: popupwindow.php?format=players&&values=error");
+// }
 
 ?>

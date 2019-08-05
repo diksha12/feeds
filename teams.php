@@ -1,4 +1,21 @@
+<?php
+include("config.php");
+if (!empty($_POST['TeamName']) && !empty($_POST['TeamShortName'])) 
+{
+	if(!$_POST['Remark']){
+		$_POST['Remark'] = "";
+	}
+	mysqli_query($link,"insert into teams (name, short_name, remarks, created_by,datetime_created) values('".$_POST['TeamName']."','".$_POST['TeamShortName']."','".$_POST['Remark']."','1','".$timenow."' )");
+	$TeamName = $_POST['TeamName'];
+	header("Location: popupwindow.php?format=teams&&values=".$_POST['TeamName']);
+	// echo "<script type='text/javascript'>alert('$TeamName added');</script>";
+	if(mysqli_error($link)){
+		echo mysqli_error($link);
+	}
+}
 
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,20 +38,3 @@
 
 </body>
 </html>
-<?php
-include("config.php");
-if (!empty($_POST['TeamName']) && !empty($_POST['TeamShortName'])) 
-{
-	if(!$_POST['Remark']){
-		$_POST['Remark'] = "";
-	}
-	mysqli_query($link,"insert into teams (name, short_name, remarks, created_by,datetime_created) values('".$_POST['TeamName']."','".$_POST['TeamShortName']."','".$_POST['Remark']."','1','".$timenow."' )");
-	$TeamName = $_POST['TeamName'];
-	echo "<script type='text/javascript'>alert('$TeamName added');</script>";
-	if(mysqli_error($link)){
-		echo mysqli_error($link);
-	}
-}
-
-
-?>

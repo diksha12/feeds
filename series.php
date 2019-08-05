@@ -17,6 +17,19 @@ include("config.php");
 		$FormatId[] = $result2['id'];
 		$FormatName[] = $result2['name'];
 	}
+if (isset($_POST['SeriesName']) && isset($_POST['Location']) && isset($_POST['Country']) && isset($_POST['FormatId']) && isset($_POST['SeriesId'])) 
+{
+	$result1=mysqli_query($link,"select * from series_format_type where id=".$_REQUEST['FormatId']);
+	$row1=mysqli_fetch_array($result1, MYSQLI_BOTH);
+	$result2=mysqli_query($link,"select * from series_type where id=".$_REQUEST['SeriesId']);
+	$row2=mysqli_fetch_array($result2, MYSQLI_BOTH);
+	mysqli_query($link,"insert into series (name, location, country,format_id,format_name, series_type_id, series_type_name,created_by,datetime_created) values('".$_POST['SeriesName']."','".$_POST['Location']."','".$_POST['Country']."','".$_POST['FormatId']."','".$row1['name']."','".$_POST['SeriesId']."','".$row2['name']."','1','".$timenow."' )");
+
+	header("Location: popupwindow.php?format=series&&values=".$_POST['SeriesName']);
+if(mysqli_error($link)){
+		echo mysqli_error($link);
+	}
+}
 
 
 ?>
@@ -59,19 +72,3 @@ include("config.php");
 
 </body>
 </html>
-<?php
-include("config.php");
-if (isset($_POST['SeriesName']) && isset($_POST['Location']) && isset($_POST['Country']) && isset($_POST['FormatId']) && isset($_POST['SeriesId'])) 
-{
-	$result1=mysqli_query($link,"select * from series_format_type where id=".$_REQUEST['FormatId']);
-	$row1=mysqli_fetch_array($result1, MYSQLI_BOTH);
-	$result2=mysqli_query($link,"select * from series_type where id=".$_REQUEST['SeriesId']);
-	$row2=mysqli_fetch_array($result2, MYSQLI_BOTH);
-	mysqli_query($link,"insert into series (name, location, country,format_id,format_name, series_type_id, series_type_name,created_by,datetime_created) values('".$_POST['SeriesName']."','".$_POST['Location']."','".$_POST['Country']."','".$_POST['FormatId']."','".$row1['name']."','".$_POST['SeriesId']."','".$row2['name']."','1','".$timenow."' )");
-	if(mysqli_error($link)){
-		echo mysqli_error($link);
-	}
-}
-
-
-?>
